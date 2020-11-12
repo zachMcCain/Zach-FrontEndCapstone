@@ -1,4 +1,5 @@
 var faker = require('faker');
+var db = require('./dBHelpers.js')
 
 
 // Seed a product and many color/size relationships
@@ -8,12 +9,18 @@ var faker = require('faker');
 
 // Generate a product with:
 var createProduct = function() {
+
+  var product = {}
   // name
-  var productName = faker.commerce.productName();
+  product.productName = faker.commerce.productName();
   // brand
-  var productBrand = faker.commerce.companyName();
+  product.productBrand = faker.commerce.companyName();
   // price
-  var productPrice = faker.commerce.price();
+  product.productPrice = faker.commerce.price();
+
+  var productId = db.insertProduct(product);
+
+
 
 
   var colors = [];
@@ -23,6 +30,8 @@ var createProduct = function() {
   for (var i = 0; i < numberOfColors; i++) {
     colors.push(generateColor());
   }
+
+
 
 
   var sizes = generateSizes();

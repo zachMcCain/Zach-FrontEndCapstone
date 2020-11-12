@@ -23,7 +23,7 @@ app.get('/api/products/details', (req, res) => {
 
 
 
-app.post('/api/products/cart', product, (req, res) => {
+app.post('/api/products/cart', (req, res) => {
 
 })
 
@@ -31,14 +31,14 @@ app.post('/api/products/cart', product, (req, res) => {
 
 
 
-app.post('/api/products/wishlist', product, (req, res) => {
+app.post('/api/products/wishlist', (req, res) => {
 
 })
 
 
 
 
-app.post('/api/products/registry', product, (req, res) => {
+app.post('/api/products/registry', (req, res) => {
 
 })
 
