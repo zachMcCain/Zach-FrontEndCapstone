@@ -23,12 +23,19 @@ var createProduct = function() {
 
 
 
+
+
+
+
+
   var colors = [];
   // For each product, generate:
   var numberOfColors = getRandomInt(1, 7);
     // 1-6 colors - with a picture for each
   for (var i = 0; i < numberOfColors; i++) {
-    colors.push(generateColor());
+    var newColor = generateColor();
+    var newColor.colorId = db.insertColor(productId, newColor);
+    colors.push(newColor);
   }
 
 
@@ -62,7 +69,10 @@ var generateSizes = function() {
   var largestSize = getRandomInt(9, 14);
   var sizes = []
   for (var i = smallestSize; i < largestSize; i++) {
-    sizes.push(i);
+    size = {};
+    size.size = i;
+    var size.sizeId = db.insertSize(productId, i);
+    sizes.push(size);
   }
   return sizes;
 }
@@ -71,14 +81,15 @@ var generateSizes = function() {
 var generateAssociations = function(colors, sizes) {
   for (var i = 0; i < colors.length; i++) {
     // for each color, assign several sizes
-    colors[0].sizes = [];
+    colors[i].sizes = [];
     var unavailableSizeChoices = [];
     unavailableSizeChoices.push(getRandomInt(sizes[0], sizes[sizes.length - 1]));
     unavailableSizeChoices.push(getRandomInt(sizes[0], sizes[sizes.length - 1]));
     unavailableSizeChoices.push(getRandomInt(sizes[0], sizes[sizes.length - 1]));
     for (var j = 0; j < sizes.length; j++) {
       if (unavailableSizeChoices.indexOf(sizes[j]) === -1) {
-        colors[0].sizes.push(sizes[j]);
+        colors[i].sizes.push(sizes[j]);
+        db.insertAssociation(productId, colors[i].colorId, sizes[j].sizeId);
       }
     }
   }
