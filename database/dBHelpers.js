@@ -1,5 +1,10 @@
 let mysql = require('mysql');
-let connection = mysql.createConnection(config);
+let connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "product"
+});
 
 
 
@@ -15,10 +20,14 @@ var insertProduct = function(productDetails) {
 
   connection.query(queryString, values, (err, results, fields) => {
     if (err) {
-      return console.error(err.message);
+      console.error(err.message);
+      //////////////////////////
+      reject(err);
     }
     // get inserted id
     console.log('Product Id:' + results.insertId);
+    ///////////////////////////
+    // resolve(results.insertId);
     return results.insertId;
   });
 
@@ -67,7 +76,7 @@ var insertSize = function(productId, size) {
 
 // Create a function to insert data into the associations table
 var insertAssociation = function(productId, colorId, sizeId) {
-  let queryString = `INSERT INTO associations(product_id, color_id, size_id) VALUES(?,?,?)`;
+  let queryString = `INSERT INTO availability(product_id, color_id, size_id) VALUES(?,?,?)`;
 
   let values = [productId, colorId, sizeId];
 

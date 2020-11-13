@@ -1,4 +1,6 @@
-CREATE DATABASE product;
+DROP DATABASE IF EXISTS product;
+
+CREATE DATABASE IF NOT EXISTS product;
 
 USE product
 
@@ -7,14 +9,14 @@ CREATE TABLE products (
   product_name varchar(255),
   product_brand varchar(255),
   product_price INT NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (product_id)
 );
 
 CREATE TABLE colors (
   id INT NOT NULL Auto_Increment,
   product_id INT NOT NULL,
   color varchar(255),
-  picture LONGBLOB NOT NULL,
+  picture varchar(255),
   PRIMARY KEY (id)
 );
 
