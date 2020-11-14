@@ -1,6 +1,6 @@
 var Promise = require("bluebird");
 var faker = require('faker');
-var db = require('./dBHelpers.js')
+var database = require('./dBHelpers.js')
 let mysql = require('mysql');
 let connection = mysql.createConnection({
   host: "localhost",
@@ -54,14 +54,14 @@ var createProduct = function() {
       resolve(results.insertId);
     });
 
-    // return db.insertProduct(product);
+    // return database.insertProduct(product);
   });
 
 
+  var colorid = 1;
   productSeed.then((productId) => {
 
       var colors = [];
-      var id = 1;
       // For each product, generate:
       var numberOfColors = getRandomInt(1, 7);
         // 1-6 colors - with a picture for each
@@ -69,9 +69,9 @@ var createProduct = function() {
         var newColor = generateColor();
 
         /////////////////////////////////////////////////////////
-        newColor.colorId = id;
-        id++
-        db.insertColor(productId, newColor);
+        newColor.colorId = colorid;
+        colorid++
+        database.insertColor(productId, newColor);
         colors.push(newColor);
       }
 
@@ -91,7 +91,7 @@ var createProduct = function() {
 
   })
   .catch((err) => console.log(err));
-  // var productId = db.insertProduct(product);
+  // var productId = database.insertProduct(product);
 
 
 }
@@ -105,18 +105,18 @@ var generateColor = function() {
 }
 
 
+var sizeid = 1;
 var generateSizes = function(productId) {
   var smallestSize = getRandomInt(0, 5);
   var largestSize = getRandomInt(9, 14);
   var sizes = []
-  var id = 0;
   for (var i = smallestSize; i < largestSize; i++) {
     var size = {};
     size.size = i;
     ///////////////////////////////////////////////
-    size.sizeId = id;
-    id++;
-    db.insertSize(productId, i);
+    size.sizeId = sizeid;
+    sizeid++;
+    database.insertSize(productId, i);
     sizes.push(size);
   }
   return sizes;
@@ -135,7 +135,7 @@ var generateAssociations = function(productId, colors, sizes) {
       if (unavailableSizeChoices.indexOf(sizes[j]) === -1) {
         colors[i].sizes.push(sizes[j]);
         //////////////////////////////////////////////////////////////////
-        db.insertAssociation(productId, colors[i].colorId, sizes[j].sizeId);
+        database.insertAssociation(productId, colors[i].colorId, sizes[j].sizeId);
       }
     }
   }
