@@ -157,8 +157,4 @@ var seed = function() {
 }
 
 seed();
-// Seed the database with:
-  // product
-  // associated colors
-  // associated sizes
-  // associated color/size availability
+

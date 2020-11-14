@@ -9,8 +9,8 @@ app.use(express.static(__dirname + '/../public'));
 
 // app.use(bodyParser.urlencoded({extended: false}))
 // app.use(bodyParser.raw())
-app.use(bodyParser.text())
-// app.use(bodyParser.json())
+// app.use(bodyParser.text())
+app.use(bodyParser.json())
 
 
 
@@ -23,12 +23,13 @@ app.get('/', (req, res) => {
 
 
 
-app.get('/api/products/details', (req, res) => {
+app.post('/api/products/details', (req, res) => {
   // console.log('I hear you.')
-  var idObj = JSON.parse(req.body);
+  console.log(req.body);
+  // var idObj = JSON.parse(req.body);
   // console.log(idObj);
   // console.log(idObj.id)
-  db.readProductData(idObj.id, (result) => {
+  db.readProductData(req.body.id, (result) => {
     res.status(200).send(result)
   })
 

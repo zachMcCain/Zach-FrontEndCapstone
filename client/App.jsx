@@ -9,14 +9,23 @@ class App extends React.Component {
     this.state = {
       product: {}
     }
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
 
   componentDidMount() {
     // Create axios request for data to update product props
-    axios.get('/')
+    console.log('Component mounted')
+    axios({
+      method: 'post',
+      url: '/api/products/details',
+      data: {
+        id: 1
+      }
+    })
     .then((response) => {
       console.log(response);
+      this.setState({product: response.data})
     })
     .catch((err) => {
       console.log(err);
@@ -26,7 +35,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Hello World!
+        {this.state.product.product_brand}
       </div>
     )
   }
