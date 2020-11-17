@@ -1,5 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Brand from './modules/Brand.jsx'
+import Name from './modules/Name.jsx'
+import Rating from './modules/Rating.jsx'
+import Price from './modules/Price.jsx'
+import FreeShip from './modules/FreeShip.jsx'
+import MembersSave from './modules/MembersSave.jsx'
+import Colors from './modules/Colors.jsx'
+import Sizes from './modules/Sizes.jsx'
+import Quantity from './modules/Quantity.jsx'
+import Curbside from './modules/Curbside.jsx'
+import ShipPickUp from './modules/ShipPickUp.jsx'
+import Cart from './modules/Cart.jsx'
+import Return from './modules/Return.jsx'
 import axios from 'axios';
 
 
@@ -20,7 +33,7 @@ class App extends React.Component {
       method: 'post',
       url: '/api/products/details',
       data: {
-        id: 1
+        id: 2
       }
     })
     .then((response) => {
@@ -32,10 +45,25 @@ class App extends React.Component {
     });
   }
 
+
+
+
   render() {
     return (
-      <div>
-        {this.state.product.product_brand}
+      <div className="productDetailsPanel">
+        <Brand brand={this.state.product.product_brand} />
+        <Name name={this.state.product.product_name}/>
+        <Rating id={this.state.product.product_id}/>
+        <Price price={this.state.product.product_price}/>
+        <FreeShip />
+        <MembersSave price={this.state.product.product_price}/>
+        <Colors colors={this.state.product.availability}/>
+        <Sizes sizes={this.state.product.availability}/>
+        <Quantity />
+        <Curbside />
+        <ShipPickUp />
+        <Cart price={this.state.product.product_price}/>
+        <Return />
       </div>
     )
   }
