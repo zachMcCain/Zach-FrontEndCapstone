@@ -14,6 +14,12 @@ import ShipPickUp from './modules/ShipPickUp.jsx'
 import Cart from './modules/Cart.jsx'
 import Return from './modules/Return.jsx'
 import axios from 'axios';
+import styled from 'styled-components'
+
+
+const StyledApp = styled.div`
+font-family: Graphik, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+`
 
 
 class App extends React.Component {
@@ -26,6 +32,7 @@ class App extends React.Component {
   }
 
 
+
   componentDidMount() {
     // Create axios request for data to update product props
     console.log('Component mounted')
@@ -33,7 +40,7 @@ class App extends React.Component {
       method: 'post',
       url: '/api/products/details',
       data: {
-        id: 2
+        id: 8
       }
     })
     .then((response) => {
@@ -50,21 +57,22 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="productDetailsPanel">
+      <StyledApp className="productDetailsPanel">
         <Brand brand={this.state.product.product_brand} />
         <Name name={this.state.product.product_name}/>
         <Rating id={this.state.product.product_id}/>
         <Price price={this.state.product.product_price}/>
-        <FreeShip />
+        <FreeShip price={this.state.product.product_price}/>
         <MembersSave price={this.state.product.product_price}/>
-        <Colors colors={this.state.product.availability}/>
+        <Colors colors={this.state.product.availability}
+        price={this.state.product.product_price}/>
         <Sizes sizes={this.state.product.availability}/>
         <Quantity />
         <Curbside />
         <ShipPickUp />
         <Cart price={this.state.product.product_price}/>
         <Return />
-      </div>
+      </StyledApp>
     )
   }
 

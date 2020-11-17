@@ -1,10 +1,18 @@
 import React from 'react';
+import styled from 'styled-components'
+
+
+const Stars = styled.span`
+  color: green;
+`
+
+
 
 function Rating(props) {
   return(
     <div>
-      <h1>INSERT STARS AND STUFF</h1>
-      <span>Item #{props.id}</span>
+      <Stars>{String.fromCharCode(9734)} &#9734; &#9734; &#9734; &#9734; </Stars>
+      <span> Item #{props.id}</span>
     </div>
   )
 }
