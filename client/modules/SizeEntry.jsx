@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const SizeBox = styled.p`
   display: inline-block;
-  margin: 2px;
+  margin: 4px;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 15px;

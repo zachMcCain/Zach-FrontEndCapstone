@@ -1,6 +1,11 @@
 import React from 'react';
 import SizeEntry from './SizeEntry.jsx';
+import styled from 'styled-components'
 
+
+const SizeBox = styled.div`
+  width: 400px;
+`
 
 
 function Sizes(props) {
@@ -9,9 +14,11 @@ function Sizes(props) {
       <div>
         <span>Size    </span>
         <span>    Size Chart</span><br></br>
-        {props.sizes[0].sizes.map((size) =>
-          <SizeEntry size={size}/>
-        )}
+        <SizeBox>
+          {props.sizes[0].sizes.map((size) =>
+            <SizeEntry size={size}/>
+          )}
+        </SizeBox>
       </div>
     );
   } else {

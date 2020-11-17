@@ -36,11 +36,12 @@ class App extends React.Component {
   componentDidMount() {
     // Create axios request for data to update product props
     console.log('Component mounted')
+    var id = Math.floor(Math.random() * (101 - 1) + 1);
     axios({
       method: 'post',
       url: '/api/products/details',
       data: {
-        id: 8
+        id: id
       }
     })
     .then((response) => {
