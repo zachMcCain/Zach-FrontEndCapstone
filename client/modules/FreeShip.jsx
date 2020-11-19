@@ -1,10 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Free = styled.h5`
+  color: #478eff;
+  padding: 5px;
+`
+
 
 function FreeShip(props) {
   if (props.price >= 50) {
-    return<h5>This item ships for FREE!</h5>;
+    return<Free>This item ships for FREE!</Free>;
   } else {
-    return<h5>Orders of $50 or more ship for free.</h5>;
+    return<Free>Orders of $50 or more ship for free.</Free>;
   }
 }
 

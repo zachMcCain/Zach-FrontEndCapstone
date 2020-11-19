@@ -19,6 +19,7 @@ import styled from 'styled-components'
 
 const StyledApp = styled.div`
 font-family: Graphik, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+width: 400px;
 `
 
 

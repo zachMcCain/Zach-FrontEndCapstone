@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 
 const Image = styled.img`
-  padding: 0;
-  margin: 0.25em;
+  padding: 5;
+  margin-right: 5px;
   border: solid;
   border-color: gray;
   border-width: 1px;

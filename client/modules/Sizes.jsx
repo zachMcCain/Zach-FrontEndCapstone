@@ -3,23 +3,27 @@ import SizeEntry from './SizeEntry.jsx';
 import styled from 'styled-components'
 
 
-const SizeBox = styled.div`
+const SizeBoxes = styled.div`
   width: 400px;
 `
+const SizeBox = styled.div`
+  padding: 5px;
+`
+
 
 
 function Sizes(props) {
   if (props.sizes) {
     return (
-      <div>
+      <SizeBox>
         <span>Size    </span>
         <span>    Size Chart</span><br></br>
-        <SizeBox>
+        <SizeBoxes>
           {props.sizes[0].sizes.map((size) =>
             <SizeEntry size={size}/>
           )}
-        </SizeBox>
-      </div>
+        </SizeBoxes>
+      </SizeBox>
     );
   } else {
     return (

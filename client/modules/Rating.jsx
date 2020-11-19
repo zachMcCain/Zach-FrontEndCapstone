@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 
 const Stars = styled.span`
-  color: green;
+  color: #478eff;
+  padding: 5px;
 `
-
 
 
 function Rating(props) {

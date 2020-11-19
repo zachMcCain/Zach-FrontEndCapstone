@@ -2,13 +2,15 @@ import React from 'react';
 import styled from 'styled-components'
 
 
-const Title = styled.a`
+const Title = styled.h3`
   text-decoration: none;
-  color: light-blue;
+  color: #478eff;
+  padding: 5px;
+  margin: 0px;
 `
 
 function Brand(props) {
-  return<h3><Title href='http://www.rei.com'>{props.brand}</Title></h3>;
+  return<Title href='http://www.rei.com'>{props.brand}</Title>;
 }
 
 export default Brand;
