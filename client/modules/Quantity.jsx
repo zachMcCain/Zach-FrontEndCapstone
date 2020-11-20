@@ -4,6 +4,16 @@ import styled from 'styled-components'
 
 const NumInput = styled.input`
   width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border-width: .5px;
+`
+
+const PlusMinus = styled.input`
+  border-radius: 100%;
+  border-width: .5px;
+  background-color: white;
+  margin: 5px;
 `
 
 
@@ -40,7 +50,7 @@ class Quantity extends React.Component {
   render () {
     return (
       <div>
-        <input type="button" value="-" onClick={this.onMinus}/><NumInput onChange={this.onChange} type="text" value={this.state.number}/><input type="button" value="+" onClick={this.onPlus}/>
+        <PlusMinus type="button" value="-" onClick={this.onMinus}/><NumInput onChange={this.onChange} type="text" value={this.state.number}/><PlusMinus type="button" value="+" onClick={this.onPlus}/>
       </div>
     )
   }
