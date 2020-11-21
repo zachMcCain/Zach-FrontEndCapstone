@@ -40,7 +40,7 @@ class App extends React.Component {
     var id = Math.floor(Math.random() * (101 - 1) + 1);
     axios({
       method: 'post',
-      url: '/api/products/details',
+      url: '/api/products/:product_id/details',
       data: {
         id: id
       }

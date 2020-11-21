@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
 
 
-app.post('/api/products/details', (req, res) => {
+app.post('/api/products/:product_id/details', (req, res) => {
   // console.log('I hear you.')
   console.log(req.body);
   // var idObj = JSON.parse(req.body);
@@ -39,24 +39,24 @@ app.post('/api/products/details', (req, res) => {
 
 
 
-app.post('/api/products/cart', (req, res) => {
+// app.post('/api/products/cart', (req, res) => {
 
-})
-
-
-
-
-
-app.post('/api/products/wishlist', (req, res) => {
-
-})
+// })
 
 
 
 
-app.post('/api/products/registry', (req, res) => {
 
-})
+// app.post('/api/products/wishlist', (req, res) => {
+
+// })
+
+
+
+
+// app.post('/api/products/registry', (req, res) => {
+
+// })
 
 
 
