@@ -65,7 +65,31 @@ var readProductData = function(productId, callback) {
       })
       .then((results) => {
         productData.availability = results;
-        callback(productData);
+          let promise = new Promise((resolve, reject) => {
+            Promise.map(results[0].sizes, function(size) {
+              let queryString = `SELECT number FROM sizes WHERE id=?`;
+              let value = size;
+              var promise = new Promise((resolve, reject) => {
+                connection.query(queryString, value, (err, results) => {
+                  size = results.number;
+                  resolve(results);
+                })
+              })
+              return promise;
+            })
+            .then((results) => {
+              var sizes = [];
+              for (var j = 0; j < results.length; j++) {
+                sizes.push(results[j][0].number);
+              }
+              // Loop through product data.availability
+              for (var i = 0; i < productData.availability.length; i++) {
+                productData.availability[i].sizes = sizes
+              }
+              callback(productData)
+            })
+          })
+
       })
     })
   });

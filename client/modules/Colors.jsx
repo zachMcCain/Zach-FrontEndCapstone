@@ -9,12 +9,15 @@ const ColorBox = styled.div`
 
 
 const ColorText = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   padding-bottom: 10px;
+  font-family: "Roboto Condensed", Roboto;
 `
 const Price = styled.div`
   font-weight: bold;
   padding-bottom: 4px;
+  font-size: 14px;
+  font-family: Graphik, Roboto, "Helvetica Neue";
 `
 
 function Colors(props) {

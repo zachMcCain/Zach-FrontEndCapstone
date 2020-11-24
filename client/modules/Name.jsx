@@ -7,6 +7,9 @@ const Head = styled.h1`
   padding: 5px;
   padding-top: 0px;
   margin-bottom: 0px;
+  font-family: Stuart, Georgia, serif;
+  font-size: 28px;
+  font-weight: normal;
 `
 
 
