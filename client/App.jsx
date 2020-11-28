@@ -62,7 +62,7 @@ class App extends React.Component {
       <StyledApp className="productDetailsPanel">
         <Brand brand={this.state.product.product_brand} />
         <Name name={this.state.product.product_name}/>
-        <Rating id={this.state.product.product_id}/>
+        <Rating id={this.state.product.product_id} rating={this.state.product.product_rating} ratings={this.state.product.product_ratings}/>
         <Price price={this.state.product.product_price}/>
         <FreeShip price={this.state.product.product_price}/>
         <MembersSave price={this.state.product.product_price}/>

@@ -9,6 +9,8 @@ CREATE TABLE products (
   product_name varchar(255),
   product_brand varchar(255),
   product_price INT NOT NULL,
+  product_rating INT NOT NULL,
+  product_ratings INT NOT NULL,
   PRIMARY KEY (product_id)
 );
 

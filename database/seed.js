@@ -26,7 +26,10 @@ var createProduct = function() {
   product.productBrand = faker.company.companyName();
   // price
   product.productPrice = faker.commerce.price();
-
+  // rating
+  product.productRating = getRandomInt(0, 6);
+  // ratings
+  product.productRatings = getRandomInt(2, 200);
 
 
 
@@ -34,11 +37,11 @@ var createProduct = function() {
   var productSeed = new Promise((resolve, reject) => {
     console.log('inside promise');
 
-    let queryString = `INSERT INTO products(product_name, product_brand, product_price) VALUES(?,?,?)`;
+    let queryString = `INSERT INTO products(product_name, product_brand, product_price, product_rating, product_ratings) VALUES(?,?,?,?,?)`;
 
     // assign proper values:
     // let values = [productDetails.productName, productDetails.productBrand, productDetails.productPrice];
-    let values = [product.productName, product.productBrand, product.productPrice];
+    let values = [product.productName, product.productBrand, product.productPrice, product.productRating, product.productRatings];
 
 
     connection.query(queryString, values, (err, results, fields) => {
