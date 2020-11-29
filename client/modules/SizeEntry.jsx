@@ -15,11 +15,21 @@ const SizeBox = styled.button`
   border-width: 1px;
   font-family: Graphik, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
-  background-color: #FFFFFF
+  background-color: #FFFFFF;
+  border-color: ${props => {
+    if (!props.choice) {
+      return 'gray'
+    }
+    if (props.choice === props.name) {
+      return '#3278AE'
+    } else {
+      return 'gray'
+    }
+  }}
 `
 
 function SizeEntry(props) {
-  return<SizeBox>{props.size}</SizeBox>
+  return<SizeBox onClick={props.select} choice={props.choice} name={props.size}>{props.size}</SizeBox>
 }
 
 export default SizeEntry;

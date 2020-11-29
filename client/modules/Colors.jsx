@@ -20,24 +20,40 @@ const Price = styled.div`
   font-family: Graphik, Roboto, "Helvetica Neue";
 `
 
-function Colors(props) {
 
-  if (props.colors) {
+class Colors extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      choice: ''
+    }
+    this.handleSelect = this.handleSelect.bind(this);
+  }
 
-    return (
-      <ColorBox>
-        <ColorText>Color : {props.colors[0].color}</ColorText>
-        <Price>${props.price}.95</Price>
-        <div>
-          {props.colors.map((color) =>
-            <ColorEntry color={color}/>
-          )}
-        </div>
-      </ColorBox>
-    )
-  } else {
-    return <h5></h5>
+  handleSelect(e) {
+    this.setState({choice: e.target.name});
+  }
+
+  render() {
+    if (this.props.colors) {
+
+      return (
+        <ColorBox>
+          <ColorText>Color : {this.state.choice}</ColorText>
+          <Price>${this.props.price}.95</Price>
+          <div>
+            {this.props.colors.map((color) =>
+              <ColorEntry select={this.handleSelect} color={color} choice={this.state.choice}/>
+            )}
+          </div>
+        </ColorBox>
+      )
+    } else {
+      return <h5></h5>
+    }
   }
 }
+
+
 
 export default Colors;

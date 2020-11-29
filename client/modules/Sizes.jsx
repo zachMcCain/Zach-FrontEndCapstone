@@ -27,25 +27,40 @@ const SizeBox = styled.div`
 `
 
 
+class Sizes extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      choice: ''
+    }
+    this.handleSelect = this.handleSelect.bind(this);
+  }
 
-function Sizes(props) {
-  if (props.sizes) {
-    return (
-      <SizeBox>
-        <Size>Size</Size>
-        <Chart>Size Chart</Chart><br></br>
-        <SizeBoxes>
-          {props.sizes[0].sizes.map((size) =>
-            <SizeEntry size={size}/>
-          )}
-        </SizeBoxes>
-      </SizeBox>
-    );
-  } else {
-    return (
-      <div></div>
-    )
+  handleSelect(e) {
+    this.setState({choice: e.target.name});
+  }
+
+  render() {
+    if (this.props.sizes) {
+      return (
+        <SizeBox>
+          <Size>Size : {this.state.choice}</Size>
+          <Chart>Size Chart</Chart><br></br>
+          <SizeBoxes>
+            {this.props.sizes[0].sizes.map((size) =>
+              <SizeEntry select={this.handleSelect} choice={this.state.choice} size={size}/>
+            )}
+          </SizeBoxes>
+        </SizeBox>
+      );
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 }
+
+
 
 export default Sizes;
