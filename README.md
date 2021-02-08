@@ -1,6 +1,6 @@
-# Project Name
+# On the Edge
 
-> Project description
+> Outdoor product marketing application featuring detailed product information, product images, and reviews
 
 ## Related Projects
 
